@@ -18,9 +18,9 @@ export const StyledThemeContext = createContext<Response | null>(null);
 export const StyledThemeProvider = ({ children }: React.PropsWithChildren) => {
   const { state: theme, setState: setTheme } = usePersistedState<Themes>("THEME", "light");
 
-  const toggleTheme = useCallback(() => {
+  const toggleTheme = () => {
     setTheme(theme => theme === "light" ? "dark" : "light");
-  }, [setTheme]);
+  };
 
   return (
     <ThemeProvider theme={theme === "light" ? light : dark}>
