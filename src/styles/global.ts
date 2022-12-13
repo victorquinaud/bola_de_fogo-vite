@@ -24,6 +24,7 @@ export default createGlobalStyle`
   html,
   body {
     height: 100vh;
+    width: 100vw;
   }
 
   .App {
