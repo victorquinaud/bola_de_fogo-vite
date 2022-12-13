@@ -1,4 +1,4 @@
-import { createContext, useCallback } from "react";
+import { createContext } from "react";
 import usePersistedState from "../hooks/usePersistedState";
 
 import { ThemeProvider } from "styled-components";
