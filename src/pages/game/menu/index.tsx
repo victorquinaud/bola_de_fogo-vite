@@ -12,7 +12,6 @@ const Menu = () => {
         <li><button onClick={() => setView("payment")} >Payment</button></li>
         <li><button onClick={() => setView("teams")} >Teams</button></li>
         <li><button onClick={() => setView("history")} >History</button></li>
-        <li><button onClick={() => setView("stopwatch")} >Stopwatch</button></li>
       </ul>
     </Container>
   );
