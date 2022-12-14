@@ -11,7 +11,7 @@ const initialState = {
   options: {
     vs: 4,
     randomStatus: false,
-    random: null
+    random: "team" as Random
   }
 }
 

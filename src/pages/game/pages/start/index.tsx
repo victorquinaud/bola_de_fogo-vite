@@ -9,7 +9,7 @@ const Start = () => {
   const [list, setList] = useState<string[]>(game.list);
   const [vs, setVs] = useState(4);
   const [randomStatus, setRandomStatus] = useState(false);
-  const [random, setRandom] = useState<"team" | "all" | "none">("none");
+  const [random, setRandom] = useState<Random>("team");
 
   useEffect(() => {
     setGame("list", list);

@@ -13,10 +13,12 @@ declare global {
     looser: Player[]
   }
 
+  type Random = "team" | "all";
+
   type Options = {
     vs: number,
     randomStatus: boolean,
-    random: "team" | "all" | null
+    random: Random
   }
 
   type TGame = {
