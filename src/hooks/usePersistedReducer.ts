@@ -26,14 +26,6 @@ const getLocalStorageValue = (label: string) => {
     return JSON.parse(storageValue);
 }
 
-const includeStateKeyCheck = (state: any, key: string) => {
-  const keys = Object.keys(state);
-  if (keys.includes(key))
-    return true;
-  else
-    return false;
-}
-
 const reducer = (state: any, { key, value }: Payload) => {
   if (!state.date)
     state.date = createDate();
@@ -42,9 +34,6 @@ const reducer = (state: any, { key, value }: Payload) => {
     state = value;
     return state;
   }
-
-  if (!includeStateKeyCheck(state, key))
-    return state
 
   state[key] = value;
   return state;
