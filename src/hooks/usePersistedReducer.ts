@@ -10,8 +10,6 @@ type Response<T> = {
   setState(key: string, value: any): void
 }
 
-let lastKeyStatus = true;
-
 const createDate = () => {
   return new Date().toLocaleDateString("pt-BR", {
     hour: "2-digit",
@@ -51,8 +49,7 @@ function usePersistedReducer<T> (label: string, initialState: T): Response<T> {
     dispatch({ key, value });
   }, [dispatch]);
 
-  if (lastKeyStatus)
-    localStorage.setItem(label, JSON.stringify(state));
+  localStorage.setItem(label, JSON.stringify(state));
 
   return {
     state,
