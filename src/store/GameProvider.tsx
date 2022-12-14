@@ -1,8 +1,16 @@
 import { createContext, useEffect } from "react";
 import usePersistedReducer from './../hooks/usePersistedReducer';
 
+const createDate = () => {
+  return new Date().toLocaleDateString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+}
+
 const initialState = {
-  date: null,
+  date: createDate(),
   status: false,
   list: [],
   payment: [],

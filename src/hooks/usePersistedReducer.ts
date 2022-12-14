@@ -10,14 +10,6 @@ type Response<T> = {
   setState(key: string, value: any): void
 }
 
-const createDate = () => {
-  return new Date().toLocaleDateString("pt-BR", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-}
-
 const getLocalStorageValue = (label: string) => {
   const storageValue = localStorage.getItem(label);
   if (storageValue)
@@ -25,9 +17,6 @@ const getLocalStorageValue = (label: string) => {
 }
 
 const reducer = (state: any, { key, value }: Payload) => {
-  if (!state.date)
-    state.date = createDate();
-
   if (key === "ALL") {
     state = value;
     return state;
