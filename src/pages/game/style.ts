@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const Visible = styled.div<Props>`
-  display: ${({ view, label }) => view === label ? "hidden" : "none"};
+  display: ${({ view, label }) => view === label ? "" : "none"};
   flex-grow: 1;
 `;
 
