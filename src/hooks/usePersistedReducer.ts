@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from "react";
+import { useReducer } from "react";
 
 type Payload = {
   key: string,
@@ -7,7 +7,7 @@ type Payload = {
 
 type Response<T> = {
   state: T,
-  setState(key: string, value: any): void
+  setState(key: keyof T | "ALL", value: any): void
 }
 
 const getLocalStorageValue = (label: string) => {
@@ -34,9 +34,9 @@ function usePersistedReducer<T>(label: string, initialState: T): Response<T> {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const setState = useCallback((key: string, value: any) => {
-    dispatch({ key, value });
-  }, [dispatch]);
+  const setState = (key: keyof T | "ALL", value: any) => {
+    dispatch({ key, value } as {key: string, value: any});
+  };
 
   localStorage.setItem(label, JSON.stringify(state));
 
