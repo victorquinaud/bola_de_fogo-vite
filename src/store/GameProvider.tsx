@@ -32,25 +32,18 @@ export const GameProvider = ({ children }: React.PropsWithChildren) => {
     if (game.status) {
       // inser a modal to verify if the user wants to continue the last game in local storage
       if (!window.confirm("You have a running game. Do you want to continue it?"))
-        setGame("ALL", initialState);
+        endGame();
     }
 
     setGame("status", true);
   }, []);
 
-  const endGame = () => {
-    const gameStorage = localStorage.getItem("GAME");
+  function endGame() {
     const historyStorage = localStorage.getItem("HISTORY");
-
-    const gameValue: TGame = gameStorage && JSON.parse(gameStorage);
     let historyValue = historyStorage && JSON.parse(historyStorage);
 
-    if (historyValue)
-      historyValue = { ...historyValue, [gameValue.date]: { ...gameValue } };
-    else
-      historyValue = { [gameValue.date]: { ...gameValue } };
+    historyValue = { ...historyValue, [game.date]: { ...game } };
 
-    localStorage.removeItem("GAME");
     localStorage.setItem("HISTORY", JSON.stringify(historyValue));
     setGame("ALL", initialState);
   }

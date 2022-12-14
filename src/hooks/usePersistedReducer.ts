@@ -19,19 +19,19 @@ const getLocalStorageValue = (label: string) => {
 const reducer = (state: any, { key, value }: Payload) => {
   if (key === "ALL") {
     state = value;
-    return state;
+    return { ...state };
   }
-
+  
   state[key] = value;
-  return state;
+  return { ...state };
 }
 
-function usePersistedReducer<T> (label: string, initialState: T): Response<T> {
+function usePersistedReducer<T>(label: string, initialState: T): Response<T> {
   const storageValue = getLocalStorageValue(label);
   if (storageValue) {
     initialState = storageValue;
   }
-  
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const setState = useCallback((key: string, value: any) => {
